@@ -1,4 +1,4 @@
-# FCN (완전 합성곱 계층; Fully Convolutional Network)
+# Fully Convolutional Network (FCN; 완전 합성곱 계층)
 
 ## 정의
 - FCN은 이미지 분류에서 우수한 성능을 보인 CNN 기반 모델(AlexNet, VGG16, GoogLeNet)을 Segmantic Segmentation Task를 수행할 수 있도록 변형시킨 모델이다.
