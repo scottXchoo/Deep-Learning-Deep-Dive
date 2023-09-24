@@ -1,4 +1,4 @@
-## CNN (합성곱 신경망; Convolutional Neural Networks)
+# CNN (합성곱 신경망; Convolutional Neural Networks)
 <img width="500" alt="image" src="https://github.com/scottXchoo/Deep_Learning_Deep_Dive/assets/107841492/f5bd4edd-6c5f-4036-a510-3e5c463acdb1">
 <img width="500" alt="image" src="https://github.com/scottXchoo/Deep_Learning_Deep_Dive/assets/107841492/4f21196b-7794-41d8-95c4-a2086580b5be">
 
