@@ -1,173 +1,24 @@
 # Deep_Learning_Deep_Dive
 딥러닝을 배우면서 정리하는 개념 지도
 
-## FCN (완전 연결 네트워크; Fully connected layer)
-- 설명
-  - Fully connected layer를 Dense layer 라고도 한다. +) DNN 이라고도 함
-  - "완전 연결 되었다"는 뜻은 한 층(layer)의 모든 뉴런이 그 다음 층(layer)의 모든 뉴런과 연결된 상태를 말한다.
-  - 1차원 배열의 형태로 평탄화된 행렬을 통해 이미지를 분류하는데 사용되는 계층이다.
-- 문제점
-  - 매개변수의 폭발적인 증가
-    - 이미지는 엄청난 개수의 숫자로 구성된 복합적인 구조
-    - RGB 이미지가 커지거나 네트워크가 깊어질 수록 매개변수 개수는 매우 급격히 증가
-  - 공간 추론의 부족
-    - 네트워크의 뉴런이 아무런 구분 없이 이전 계층의 모든 값을 받음
-    - 따라서, '거리/공간성'이 없음
-    - 모든 픽셀 값이 계층별로 '원래 위치와 상관없이' 결합되므로 픽셀 사이의 근접성 개념이 소실됨
+## Model
+### [FCN (완전 연결 네트워크; Fully connected layer)](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/FCN.md#fcn-%EC%99%84%EC%A0%84-%EC%97%B0%EA%B2%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-fully-connected-layer)
+### [CNN (합성곱 신경망; Convolutional Neural Networks)](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN.md#cnn-%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks)
 
-## CNN (합성곱 신경망; Convolutional Neural Networks)
-<img width="500" alt="image" src="https://github.com/scottXchoo/Deep_Learning_Deep_Dive/assets/107841492/f5bd4edd-6c5f-4036-a510-3e5c463acdb1">
-<img width="500" alt="image" src="https://github.com/scottXchoo/Deep_Learning_Deep_Dive/assets/107841492/4f21196b-7794-41d8-95c4-a2086580b5be">
+## Keyword
+### [최적화 기법](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Keyword/%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B8%B0%EB%B2%95.md#%EC%B5%9C%EC%A0%81%ED%99%94-%EA%B8%B0%EB%B2%95)
+- GD (Gradient Descent)
+- SDG (Stochastic Gradient Descent)
+- Momentum
+- NAG (Nestreove Accelerated Gradient)
+- Adagrad
+- Adadelta
+- RMSprop
+- Adam (Adaptive Moment Estimation)
 
-
-- 설명
-  - '3차원 데이터'를 입력으로 취하고 뉴런을 그와 비슷한 볼륨으로 정렬한다.
-  - 각 뉴런은 이전 계층에서 이웃한 영역에 속한 일부 요소에만 접근하는데, 이 영역을 뉴런의 수용 영역(receptive field)이라고 한다.
-  - 데이터를 특징 맵 (feature map)이라고 부르기도 한다.
-- 구조
-  - convolutional layer (합성곱층)
-    - 정의
-      - 입력 이미지의 모든 픽셀에 연결되는 것이 아니라, 합성곱층 뉴런의 수용영역(receptive field) 안에 있는 픽셀에만 연결이 된다.
-    - 개념
-      - filter : 수용영역을 합성곱층에서 필터 혹은 커널이라고 한다. 이 필터가 바로 합성곱층에서의 가중치 파라미터(W)에 해당한다.
-      - padding : 합성곱 연산을 수행하기 전, 입력데이터 주변을 특정 값으로 채워 늘리는 것을 말한다. 이를 사용하지 않으면, 데이터의 spartial 크기는 합성곱층을 지날 때마다 작아지므로 가장자리 정보들이 소실되는 문제가 발생한다.
-      - stride : 입력 데이터에 필터를 적용할 때, 이동할 간격을 조정하는 것. 즉, 필터가 이동할 간격을 말한다.
-  - pooling layer (풀링층)
-    - 정의
-      - 합성곱층의 출력 데이터를 입력으로 받아서 출력 데이터의 크기를 줄이거나 특정 데이터를 강조하는 용도로 사용된다.
-      - 풀링 연산은 쉽게 말해 가로 & 세로 방향의 공간을 줄이는 연산이다.
-      - 입력 데이터의 크기가 축소되고 학습하지 않기 때문에 파라미터 수가 줄어들어 **과대적합 (overfitting)이 발생하는 것을 방지해 줍니다.**
-    - 종류
-      - Max Pooling : 대상 이미지 영역에서 최댓값을 구함
-      - Average Pooling : 대상 이미지 영역에서 평균값을 구함
-  - fully connected layer (완전 연결 계층)
-    - 정의
-      - Convolution/Pooling 프로세스의 결과를 취하여 이미지를 정의된 라벨로 분류하는데 사용 (단순한 분류의 예)
-      - 2차원의 배열 형태 이미지를 1차원의 평탄화 작업을 통해 이미지를 분류하는데 사용되는 계층이다.
-
-## 학습률 스케줄링
-- 정의
-  - 학습률을 너무 크게 잡으면 발산할 수 있으며, 너무 작게 잡으면 최적점에 수렴하는데 오랜 시간이 걸린다.
-  - 큰 학습률로 시작하고 학습 속도가 느려질 때 학습률을 낮추면 최적의 고정 학습률보다 좋은 솔루션을 더 빨리 발견할 수 있다.
-- 종류
-  - 거듭제곱 기반 스케줄링 (Power Scheduling)
-    - 학습이 진행될수록 학습률은 감소한다.
-    - 처음엔 Local Minimum이 멀리 있을테니 긴 보폭으로 다가가다가 거의 다 왔을 때는 보폭을 줄여 Local Minimun에 세심하게 가까이 가려는 것이다.
-  - 지수 기반 스케줄링 (Exponential Scheduling)
-  - 구간별 고정 스케줄링 (Piecewise Constant Scheduling)
-    - 일정 횟수의 에포크 동안 일정한 학습률을 사용하고
-    - 그 다음 또 다른 횟수의 에포크 동안은 더 작은 학습률을 사용하는 방식이다.
-  - 성능 기반 스케줄링 (Performance Scheduling)
-    매 N번의 스텝마다 Validation Loss를 측정하고, 이것이 줄어들지 않으면 i배만큼 학습률을 감소시킨다.
-  - 1사이클 스케줄링 (1cycle Scheduling)
-- 방법
-  - 학습값을 크게 설정했다가, 학습의 진행과 함께 줄여나가기
-    - 학습률을 파라미터 업데이트 수에 비례하여 감소하도록 스케줄링
-    - 특정 업데이트가 지나면 감소하는 비율도 변경하기도 한다.
-    - 최적의 방법은 아니며, 오히려 배치 사이즈를 늘리는 것이 좋다는 연구 결과도 있다.
-  - 층마다 다른 학습률을 사용
-    - 각 층의 가중치 업데이트 속도가 비슷하도록 가중치를 설정하는 것이 좋다.
-    - 로지스틱 함수처럼 출력값이 한정적인 활성화 함수를 사용할 때, 중요하다.
-    - 출력층과 가까운 층에서는 학습률을 작게, 입력층과 가까운 층에서는 학습률을 크게 한다.
-  - 학습률을 자동적으로 결정 (Adagrad)
-    - 드물게 나타나는 기울기의 성분을 자주 나타나는 기울기의 성분보다 중시하여 파라미터 업데이트한다.
-
-### 학습률
-- 정의
-  - 경사하강법에서 파라미터를 업데이트하는 정도를 조절하기 위한 변수이다.
-  - 적절한 모델과 가중치 초기값을 설정했음에도, 학습률에 따라서 모델의 학습이 달라질 수 있다.
-
-### 경사하강법 (Gradient Descent; GD)
-- 정의
-  - 함수의 기울기를 구하고 경사의 반대 방향으로 계속 이동시켜 극값에 이를 때까지 반복하는 것이다.
-  - 머신러닝 모델의 옵티마이저(주어진 데이터에 맞게 모델 파라미터들을 최적화시켜주는 역할)의 한 종류이다.
-    - 경사하강법 외에도 여러 옵티마이저가 존재한다.
-    - 하지만 결국 다른 옵티마이저들도 경사하강법에서 새로운 개념을 추가하거나 단점을 보완해 나가면서 만들어졌다.
-- 사용하는 이유
-  - 인공지능은 손실 함수를 통하여 자신의 파라미터를 검증한다.
-  - 특정 파라미터를 통해 나온 손실 함수 값이 가장 낮은 곳이 바로 **최적의 파라미터** 라고 할 수 있다.
-  - Q. 그러면 그냥 손실 함수 미분해서 최소 & 최대 값을 찾으면 되지 않을까?
-    - 실제 우리가 마주치는 함수들은 간단한 함수가 아니라 복잡하고, 비선형적인 함수가 대부분이므로 미분을 통해 그 값을 계산하기 어려운 경우가 많다.
-    - 미분을 구현하는 과정보다 경사 하강법을 구현하여 최솟값을 찾는 것이 실질적으로 더 효율적이다.
-- 문제점
-  - 적절한 학습률 (learing rate)
-    - 학습률이 높으면,
-      - 한 번에 이동하는 거리가 커지므로 최적값에 빨리 수렴할 수 있다는 장점이 있지만,
-      - 너무 크게 설정하면 최적값에 수렴하지 못하고 다른 곳으로 발산하는 현상이 나타날 수 있다.
-    - 학습률이 낮으면,
-      - 발산하지 않는 대신 최적값에 수렴하는 시간이 오래 걸릴 수 있다.
-    - 따라서, 학습률을 적절히 조정하는 것이 매우 중요하다.
-  - local minimum
-    - 우리는 전역 (global) 최솟값을 찾고 싶지만, 어떤 이유로 인해 지역 (local) 최솟값에 빠지는 경우 탈출하지 못하고 거기로 수렴해버릴 수 있다.
-<img width="300" alt="image" src="https://github.com/scottXchoo/Deep_Learning_Deep_Dive/assets/107841492/451ed3d5-e265-4610-a7d2-4911b9660a23">
-      
-### 손실 함수
-- 정의
-  - 머신러닝에서는 오차를 손실(Loss) 또는 비용(Cost), 오차(Error)를 정의한 함수를 손실 함수 (Loss function) 또는 비용 함수 (Cost function), 오차 함수 (Error function) 이라고 한다.
-  - 머신러닝 알고리즘은 손실 함수의 값을 최소화 하는 방향으로 학습하는 것이 목적이다.
- 
-## 최적화 기법
-<img width="300" alt="image" src="https://github.com/scottXchoo/Deep_Learning_Deep_Dive/assets/107841492/ddc3f9c9-dc21-4c54-89fc-b0c1722ef2fd">
-
-모든 최적화 기법은 GD (혹은 SGD - Stochastic Gradient Descent)에서 출발한다.
-
-### Momentum
-- GD의 단점
-  - 기울기 0인 점을 잘 탈출하지 못한다.
-  - 너무 훈련이 느리다.
-- 정의
-  - 변수가 가던 방향으로 계속 가도록 하는 속도(velocity)항을 추가하는 것
-  - 바른 방향으로 가고 있다면 점점 더 속도가 빨라지게 되어 더 빨리 훈련이 될 수 있다.
-  - 현재 기울기가 0인 안장점이더라도 속도가 있으니 계속 이동해 안장점을 더 잘 탈출할 수 있게 된다.
-
-### NAG (Nestreove Accelerated Gradient
-- Momentum의 단점
-  - 실제 local minimum 등에 가까워졌지만 이를 지나쳤을 때
-  - 계속해서 local minimun과 반대 방향으로 가고자 하는 관성이 있으므로 수렴을 하는 데에 조금 더 오랜 시간이 걸릴 수 있다.
-- 정의
-  - Momentum과 비슷하지만 약간의 variation이 추가된 상태
-  - local minimum를 지나친다고 하더라도 현 시점에서 한 스텝을 더 밟은 그래디언트를 반영하기 때문에 minima를 지나치고자 하는 관성을 조금 더 빠르게 탈출할 수 있다.
-
-### Adagrad
-- 정의
-  - learing rate 조절을 통해 뉴럴넷 내에서 많이 변화한 파라미터들에 대해서는 적게 변화를 시키고
-  - 그렇지 않은 파라미터들에 대해서는 많이 변화시키는 방법
-
-### Adadelta
-- Adagrad의 단점
-  - training이 길어질 때, gt 앞의 항의 분모에 있는 Gt(t시점까지의 그래디언트 제곱합)가 지속적으로 커지면서(property of monotonic increasing) 0에 가까워져 학습이 이루어지지 않는다.
-- 정의
-  - Adagrad에서는 모든 timestep에 대해서 Gt를 계산했다면,
-  - Adadelta에서는 기간(window)을 설정해놓고 그 window size만큼의 기간에 해당하는 Gradient만 반영을 하겠다는 것이다.
-  - 다만, window size만큼의 기간에 해당하는 gradient를 저장해두어야 하기 때문에 공간적으로 비효율적이다.
-  - 이러한 비효율성을 방지하기 위해 EMA(Exponential Moving Average)를 사용한다.
-  - learing rate가 따로 존재하지 않아 우리가 바꿀 수 있는 부분이 많이 없어 잘 활용되지 않는다.
-
-### RMSprop
-- Adadelta의 단점
-  - 학습률이 없다.
-- 정의
-  - Adadelta와 마찬가지로 gradient squares의 지수이동평균을 사용하지만, 여기서는 학습률인 η을 도입해서 이를 Gt의 square root로 나눠주는 방식이다.
-  - 즉, Adadelta에서 다시 학습률을 도입한 최적화 방법론이다.
-
-### Adam (Adaptive Moment Estimation)
-- 정의
-  - 가장 무난하게 사용된다.
-  - 과거의 그래디언트와 과거의 squared gradient를 모두 이용한다.
-  - Adam 알고리즘은 adaptive learing rate 방법과 momentum을 효과적으로 결합한 알고리즘이다.
-
-## Notes
-### Batch Size
-모델 학습 중 parameter를 업데이트할 때, 사용할 데이터 개수를 의미한다. 예를 들어, 총 100개의 문제가 있을 때, 20개씩 풀고 채점한다면 Batch Size는 20이다.
-
-### Iteration
-전체 데이터에 대해 총 Batch의 수를 의미한다. Step이라고 부르기도 한다. 예를 들어, Batch Size가 300이고 전체 Dataset의 개수가 3,000이라면, 전체 데이터셋을 학습시키기 위해서는 총 10개의 Batch가 필요하다. 즉, Iteration의 수는 10이다.
-
-### Epoch
-전체 데이터셋을 학습한 횟수를 의미한다. 예를 들어, 문제집 한 권 전체를 1번 푼 사람, 3번, 5번 푼 사람이 있다. Epoch는 이처럼 문제집 한 권을 몇 회 풀었는지를 의미한다.
-
-### Overfitting (과대적합)
-모델이 훈련 데이터의 특수한 성질을 과하게 학습해 일반화를 못해 결국 테스트 데이터에서 오차가 커지는 현상
-
-### Underfitting (과소적합)
-훈련 데이터에 과적합도 못하고 일반화 성질도 학습하지 못해 훈련/테스트 데이터 모두 오차가 크게 나오는 경우
+### [학습률 스케줄링](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Keyword/%ED%95%99%EC%8A%B5%EB%A5%A0%20%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81.md#%ED%95%99%EC%8A%B5%EB%A5%A0-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81)
+- 거듭제곱 기반 스케줄링 (Power Scheduling)
+- 지수 기반 스케줄링 (Exponential Scheduling)
+- 구간별 고정 스케줄링 (Piecewise Constant Scheduling)
+- 성능 기반 스케줄링 (Performance Scheduling)
+- 1사이클 스케줄링 (1cycle Scheduling)
