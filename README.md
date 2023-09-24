@@ -2,11 +2,20 @@
 딥러닝을 배우면서 정리하는 개념 지도
 
 ## Model
-### [FCN (완전 연결 네트워크; Fully connected layer)](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/FCN.md#fcn-%EC%99%84%EC%A0%84-%EC%97%B0%EA%B2%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-fully-connected-layer)
-### [CNN (합성곱 신경망; Convolutional Neural Networks)](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN.md#cnn-%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks)
+#### [Fully Connected Layer (FC Layer; 완전 연결 네트워크)](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/FC%20layer.md)
+
+#### [Convolutional Neural Networks (CNN; 합성곱 신경망)](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN.md#cnn-%ED%95%A9%EC%84%B1%EA%B3%B1-%EC%8B%A0%EA%B2%BD%EB%A7%9D-convolutional-neural-networks)
+- [LeNet](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN/LeNet-5.md)
+- [AlexNet](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN/AlexNet.md)
+- [VGGNet](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN/VGGNet.md)
+- [GoogLeNet](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN/GoogLeNet.md)
+- [ResNet](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN/ResNet.md)
+- [SENet](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/CNN/SENet.md)
+
+#### [Fully Convolutional Layer (FCN; 완전 합성곱 계층)](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Model/FCN.md)
 
 ## Keyword
-### [최적화 기법](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Keyword/%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B8%B0%EB%B2%95.md#%EC%B5%9C%EC%A0%81%ED%99%94-%EA%B8%B0%EB%B2%95)
+#### [최적화 기법](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Keyword/%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B8%B0%EB%B2%95.md#%EC%B5%9C%EC%A0%81%ED%99%94-%EA%B8%B0%EB%B2%95)
 - GD (Gradient Descent)
 - SDG (Stochastic Gradient Descent)
 - Momentum
@@ -16,7 +25,7 @@
 - RMSprop
 - Adam (Adaptive Moment Estimation)
 
-### [학습률 스케줄링](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Keyword/%ED%95%99%EC%8A%B5%EB%A5%A0%20%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81.md#%ED%95%99%EC%8A%B5%EB%A5%A0-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81)
+#### [학습률 스케줄링](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Keyword/%ED%95%99%EC%8A%B5%EB%A5%A0%20%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81.md#%ED%95%99%EC%8A%B5%EB%A5%A0-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81)
 
 - 거듭제곱 기반 스케줄링 (Power Scheduling)
 - 지수 기반 스케줄링 (Exponential Scheduling)
