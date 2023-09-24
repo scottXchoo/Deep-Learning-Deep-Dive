@@ -17,7 +17,8 @@
 - Adam (Adaptive Moment Estimation)
 
 ### [학습률 스케줄링](https://github.com/scottXchoo/Deep_Learning_Deep_Dive/blob/main/Keyword/%ED%95%99%EC%8A%B5%EB%A5%A0%20%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81.md#%ED%95%99%EC%8A%B5%EB%A5%A0-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81)
-- 거듭제곱 기반 스케줄링 (Power Scheduling)
+
+- 거듭제곱 기반 스케줄링 (Power Scheduling)
 - 지수 기반 스케줄링 (Exponential Scheduling)
 - 구간별 고정 스케줄링 (Piecewise Constant Scheduling)
 - 성능 기반 스케줄링 (Performance Scheduling)
