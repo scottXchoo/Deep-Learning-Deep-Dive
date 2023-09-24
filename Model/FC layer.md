@@ -1,4 +1,4 @@
-# FCN (완전 연결 네트워크; Fully connected layer)
+# FC (완전 연결 네트워크; Fully Connected layer)
 - 설명
   - Fully connected layer를 Dense layer 라고도 한다. +) DNN 이라고도 함
   - "완전 연결 되었다"는 뜻은 한 층(layer)의 모든 뉴런이 그 다음 층(layer)의 모든 뉴런과 연결된 상태를 말한다.
